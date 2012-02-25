@@ -106,7 +106,9 @@ $(document).ready(function(){
 				   }
 				   
 				   results.html(html).show(); 
+				   $('#error').hide(); 
 				  } else {
+					results.hide();
 					$('#error').text(data.error).show(); 
 				  }
 			  }, 
@@ -114,6 +116,8 @@ $(document).ready(function(){
 				alert('please check your internet connection'); 
 			  }
 			}); 
+
+			 return false; 
 		}); 
 
 		$('#currencies').keyup(function(e){

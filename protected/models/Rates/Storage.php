@@ -11,6 +11,10 @@ class App_Rates_Storage {
 	 * @var Database
 	 */
 	private $_db; 
+	/**
+	 * @var array
+	 */
+	private $_loadData; 
 
 	const DB_TABLE = 'exchange_rates'; 
 	
@@ -42,9 +46,12 @@ class App_Rates_Storage {
 	 * @return stdClass
 	 */
 	public function _loadFromDb(){
-		$statement = 'SELECT currency,rate FROM ' . self::DB_TABLE; 
-		$query = $this->_db->query($statement);
-		return $query->fetchAll(PDO::FETCH_OBJ);
+		if (empty($this->_loadData)){
+			$statement = 'SELECT currency,rate FROM ' . self::DB_TABLE; 
+			$query = $this->_db->query($statement);
+			$this->_loadData = $query->fetchAll(PDO::FETCH_OBJ);
+		}
+		return $this->_loadData; 
 	}
 	
 	/**
