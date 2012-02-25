@@ -59,16 +59,13 @@ class Database {
 	
 	/**
 	 * Query your DB 
-	 * @param string $query
-	 * @TODO needs to be changed, there is no validation and its not secured,
-			 please read more about mysqli\PDO sql and use it
-			 don't forget to validate ANY data you get 
-	 * @throws Exception
-	 * @return Database 
+	 * @param string $statement
+	 * @param array $data Optional
+	 * @return PDOStatement|False 
 	 */
 	public function query($statement,array $data = array()){ 
 		$pstmt = $this->_db->prepare($statement);
-		$this->_affectedRows = $pstmt->execute($data);
+		$this->_affectedRows = $pstmt->execute($data); 
 		return $pstmt; 	
 	}
 	
