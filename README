@@ -1,0 +1,32 @@
+Descripition
+-------------
+
+/core/ 		- contains generic classes (accessable only for apache user)
+/cli/ 		- contains cron jobs and cron helpers (accessable only for apache user) 
+/protected 	- contains application's files (accessable only for apache user)
+/web/ 		- document root, should be accessable from world wide. 
+/db/		- contains DB table\data to import (should not be uploaded to production) 
+-------------
+
+
+How to use 
+-------------
+
+1. Import /db/ files to ur database
+2. Edit /protected/configs/app.php and all other related files
+3. run $>php cli/get_currencies.php 
+4. hit http://localhost/index.php
+5. insert currencies and hit the button 
+-------------
+
+Nice to have 
+-------------
+Memcache is supported automatically if installed.
+-------------
+
+TODO 
+-------------
+* Implement Autoloader class instead of using require_once()
+* Implement AssetsManager to control JavaScript and CSS files 
+ 
+ 
